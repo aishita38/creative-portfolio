@@ -8,6 +8,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectDetail from './components/ProjectDetail';
+import ScrollToTop from './components/ScrollToTop';
 
 const Home = () => (
   <main>
@@ -21,7 +22,7 @@ const Home = () => (
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50 selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-paper text-dark selection:bg-pink/30">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

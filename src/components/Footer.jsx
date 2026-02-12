@@ -1,46 +1,54 @@
 import React from 'react';
-import { Mail, Linkedin, ArrowUp } from 'lucide-react';
+import { Mail, Linkedin, ArrowUp, Scissors } from 'lucide-react';
 
 const Footer = () => {
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
     return (
-        <footer className="py-12 bg-slate-950 border-t border-white/5">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
-                    <div>
-                        <a href="#" className="text-2xl font-bold font-outfit tracking-tighter text-white">
-                            CREATIVE<span className="text-indigo-500">.</span>
-                        </a>
-                        <p className="mt-4 text-slate-500 max-w-xs">
-                            Designing and building digital experiences that matter.
+        <footer className="pt-24 pb-32 bg-paper border-t-4 border-dashed border-dark/10 relative overflow-hidden">
+            {/* Background Doodle */}
+            <div className="absolute -bottom-6 left-[10%] opacity-5 marker-text text-8xl md:text-9xl rotate-[5deg] pointer-events-none select-none">
+                THE END
+            </div>
+
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-12 mb-16">
+                    <div className="text-center md:text-left">
+                        <div className="flex flex-col items-center md:items-start gap-3">
+                            <div className="relative inline-block px-6 py-2 bg-white scrapbook-card rotate-[-1deg]">
+                                <span className="text-2xl font-black font-outfit tracking-tighter text-dark uppercase">
+                                    ISHITA<span className="text-pink">AGARWAL</span>
+                                </span>
+                            </div>
+                            <div className="bg-white/40 border-2 border-dashed border-pink/20 scrapbook-card px-4 py-1 rotate-[2deg] inline-block">
+                                <span className="text-sm font-black font-outfit tracking-tighter text-dark/40 uppercase">
+                                    GRAPHIC DESIGNER
+                                </span>
+                            </div>
+                        </div>
+                        <p className="mt-6 text-dark/50 max-w-xs hand-text font-bold italic text-xl">
+                            "Designing and building digital experiences that matter."
                         </p>
                     </div>
 
                     <div className="flex gap-6">
-                        <a href="mailto:aishita38@gmail.com" className="w-12 h-12 glass rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 transition-all">
-                            <Mail className="w-5 h-5" />
+                        <a href="mailto:aishita38@gmail.com" className="w-14 h-14 bg-white scrapbook-card flex items-center justify-center text-dark hover:text-pink transition-all hover:-translate-y-2 hover:rotate-12">
+                            <Mail className="w-6 h-6" />
                         </a>
-                        <a href="https://www.linkedin.com/in/ishita-agarwal-a06791322/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 glass rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 transition-all">
-                            <Linkedin className="w-5 h-5" />
+                        <a href="https://www.linkedin.com/in/ishita-agarwal-a06791322/" target="_blank" rel="noopener noreferrer" className="w-14 h-14 bg-white scrapbook-card flex items-center justify-center text-dark hover:text-pink transition-all hover:-translate-y-2 hover:rotate-[-12deg]">
+                            <Linkedin className="w-6 h-6" />
                         </a>
+                        <button
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            className="w-14 h-14 bg-white scrapbook-card flex items-center justify-center text-dark hover:text-pink transition-all hover:-translate-y-2 hover:rotate-6 group"
+                        >
+                            <ArrowUp className="w-6 h-6 group-hover:-translate-y-1 transition-transform" />
+                        </button>
                     </div>
-
-                    <button
-                        onClick={scrollToTop}
-                        className="w-12 h-12 glass rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 transition-all group"
-                    >
-                        <ArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
-                    </button>
                 </div>
 
-                <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 text-sm text-slate-600">
-                    <p>© {new Date().getFullYear()} Creative Portfolio. All rights reserved.</p>
-                    <div className="flex gap-8 mt-4 md:mt-0">
-                        <a href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-slate-300 transition-colors">Terms of Service</a>
+                <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t-2 border-dashed border-dark/10 text-xs font-black uppercase tracking-widest text-dark/30">
+                    <p>© {new Date().getFullYear()} Graphic Designer Portfolio. 2025 Edition.</p>
+                    <div className="flex gap-8 mt-4 md:mt-0 marker-text">
+                        <span className="cursor-default">Thanks for stopping by!</span>
                     </div>
                 </div>
             </div>

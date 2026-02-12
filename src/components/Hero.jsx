@@ -1,65 +1,70 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDownRight } from 'lucide-react';
+import { ArrowDownRight, Paperclip } from 'lucide-react';
 
 const Hero = () => {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-            {/* Background Blobs */}
-            <div className="absolute top-1/4 -left-20 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px] animate-pulse" />
-            <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] animate-pulse delay-700" />
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-12">
+            {/* Background Texture Overlay */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/paper-fibers.png')]" />
 
-            <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    initial={{ opacity: 0, rotate: -2 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="relative p-8 scrapbook-card bg-white rotate-[-1deg]"
                 >
-                    <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-wider uppercase bg-indigo-500/10 text-indigo-400 rounded-full border border-indigo-500/20">
+                    <div className="tape tape-pink -top-4 left-1/4" />
+                    <Paperclip className="absolute -top-4 -right-2 w-10 h-10 text-dark/20 rotate-12" />
+
+                    <span className="inline-block px-4 py-1 mb-6 text-sm font-black uppercase tracking-widest bg-pink/20 text-pink border-2 border-pink/20 marker-text">
                         Available for freelance
                     </span>
-                    <h1 className="text-6xl md:text-8xl font-bold leading-tight mb-8">
+
+                    <h1 className="text-6xl md:text-7xl font-black leading-none mb-8 font-outfit uppercase tracking-tighter">
                         Crafting <br />
-                        <span className="text-gradient">Digital</span> <br />
+                        <span className="sketchy-text text-pink block mt-2 text-7xl md:text-8xl">Digital</span>
                         Experiences
                     </h1>
-                    <p className="text-xl text-slate-400 max-w-lg mb-10 leading-relaxed">
+
+                    <p className="text-xl text-dark/70 max-w-lg mb-10 leading-relaxed hand-text font-medium">
                         Creative and detail-oriented Graphic Designer with hands-on experience designing social media content, banners, and UI/UX for college-level tech and cultural organizations.
                     </p>
-                    <div className="flex flex-wrap gap-4">
-                        <a href="#work" className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
-                            View My Work <ArrowDownRight className="w-5 h-5" />
+
+                    <div className="flex flex-wrap gap-6">
+                        <a href="#work" className="px-8 py-4 bg-pink text-dark font-black uppercase tracking-widest text-xs transition-all hover:scale-105 hover:bg-dark hover:text-white shadow-[4px_4px_0px_rgba(0,0,0,0.1)] active:translate-x-1 active:translate-y-1 active:shadow-none">
+                            View My Work
                         </a>
-                        <a href="#contact" className="px-8 py-4 glass text-white rounded-xl font-semibold transition-all hover:bg-white/10 hover:scale-105 active:scale-95">
+                        <a href="#contact" className="px-8 py-4 border-2 border-pink text-pink font-black uppercase tracking-widest text-xs transition-all hover:scale-105 hover:bg-pink hover:text-dark">
                             Get in Touch
                         </a>
                     </div>
                 </motion.div>
 
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    className="relative hidden md:block"
+                    initial={{ opacity: 0, rotate: 3 }}
+                    animate={{ opacity: 1, rotate: 2 }}
+                    transition={{ duration: 1 }}
+                    className="relative"
                 >
-                    <div className="relative z-10 w-full aspect-square glass rounded-3xl overflow-hidden shadow-2xl">
+                    <div className="scrapbook-card p-4 bg-white rotate-[2deg] relative">
+                        <div className="tape tape-pink -top-6 right-1/4" />
                         <img
-                            src="/projects/project-1.png"
-                            alt="Hero Work"
-                            className="w-full h-full object-cover opacity-80"
+                            src="/hero-main.jpg"
+                            alt="Ishita's Illustration"
+                            className="w-full aspect-square object-cover"
                         />
-                    </div>
-                    {/* Decorative elements */}
-                    <div className="absolute -top-6 -right-6 w-24 h-24 glass rounded-2xl flex items-center justify-center animate-bounce duration-[3000ms]">
-                        <div className="w-12 h-12 rounded-full border-2 border-dashed border-indigo-500 animate-slow-spin" />
-                    </div>
-                    <div className="absolute -bottom-10 -left-10 w-48 h-48 glass rounded-3xl p-6 shadow-xl backdrop-blur-2xl">
-                        <div className="space-y-3">
-                            <div className="h-2 w-full bg-indigo-500/20 rounded" />
-                            <div className="h-2 w-2/3 bg-indigo-500/20 rounded" />
-                            <div className="h-2 w-1/2 bg-indigo-500/20 rounded" />
+                        <div className="mt-4 flex justify-between items-center border-t-2 border-dashed border-dark/10 pt-4">
+                            <span className="hand-text text-sm font-bold text-dark/40 italic">#DesignLife2025</span>
+                            <div className="flex gap-1">
+                                <div className="w-3 h-3 rounded-full bg-pink" />
+                                <div className="w-3 h-3 rounded-full bg-peach" />
+                                <div className="w-3 h-3 rounded-full bg-pink" />
+                            </div>
                         </div>
                     </div>
+
                 </motion.div>
             </div>
         </section>

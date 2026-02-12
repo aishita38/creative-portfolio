@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase } from 'lucide-react';
+import { Briefcase, Pin } from 'lucide-react';
 
 const Experience = () => {
     const experiences = [
@@ -40,39 +40,52 @@ const Experience = () => {
     ];
 
     return (
-        <section id="experience" className="py-24 bg-slate-900/10">
-            <div className="max-w-7xl mx-auto px-6">
-                <h2 className="text-4xl md:text-5xl font-bold mb-16 font-outfit text-center">
-                    Work <span className="text-indigo-500">Experience</span>
-                </h2>
+        <section id="experience" className="py-24 bg-paper relative overflow-hidden">
+            {/* Background Scribble */}
+            <div className="absolute top-10 left-[5%] opacity-5 marker-text text-8xl rotate-[-10deg] pointer-events-none select-none">
+                TIMELINE
+            </div>
 
-                <div className="space-y-12">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="flex flex-col items-center mb-20">
+                    <div className="relative inline-block px-12 py-4 bg-white scrapbook-card rotate-[1deg]">
+                        <Pin className="absolute -top-4 left-1/2 -ml-3 w-8 h-8 text-peach rotate-[-20deg]" />
+                        <h2 className="text-4xl md:text-5xl font-black font-outfit text-dark uppercase tracking-tighter text-center">
+                            Work <span className="sketchy-text text-pink block text-4xl md:text-5xl mt-1">Experience</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div className="space-y-16 max-w-4xl mx-auto">
                     {experiences.map((exp, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="glass p-8 rounded-[32px] hover:border-indigo-500/30 transition-all group"
+                            className={`p-8 bg-white scrapbook-card relative group transition-all duration-300 ${index % 2 === 0 ? 'rotate-[-0.5deg]' : 'rotate-[0.5deg]'}`}
                         >
-                            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-                                <div>
-                                    <h3 className="text-2xl font-bold text-white font-outfit group-hover:text-indigo-400 transition-colors">
-                                        {exp.company}
-                                    </h3>
-                                </div>
-                                <span className="px-4 py-1.5 rounded-full glass-dark text-indigo-400 text-sm font-semibold border border-indigo-500/20">
+                            <div className={`tape tape-pink -top-2 ${index % 2 === 0 ? 'left-10' : 'right-10'} w-24`} />
+
+                            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                                <h3 className="text-2xl font-black text-dark font-outfit uppercase tracking-tight leading-none group-hover:text-pink transition-colors">
+                                    {exp.company}
+                                </h3>
+                                <span className="px-6 py-1 bg-pink/10 text-pink border-2 border-pink/10 text-xs font-black uppercase tracking-widest marker-text rotate-1">
                                     {exp.period}
                                 </span>
                             </div>
+
                             <ul className="space-y-4">
                                 {exp.roles.map((role, rIndex) => (
-                                    <li key={rIndex} className="flex gap-4 text-slate-400 leading-relaxed">
-                                        <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0" />
-                                        {role}
+                                    <li key={rIndex} className="flex gap-4 text-dark/70 leading-relaxed hand-text font-bold italic">
+                                        <div className="mt-2 w-2 h-2 rounded-full bg-peach flex-shrink-0" />
+                                        <span>"{role}"</span>
                                     </li>
                                 ))}
                             </ul>
+
+
                         </motion.div>
                     ))}
                 </div>

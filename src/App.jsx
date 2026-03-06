@@ -22,7 +22,7 @@ const Home = () => (
 
 function App() {
   return (
-    <div className="min-h-screen bg-paper text-dark selection:bg-pink/30">
+    <div className="min-h-screen bg-paper text-dark selection:bg-pink/30 overflow-x-hidden">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

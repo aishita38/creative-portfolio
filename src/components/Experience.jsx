@@ -40,7 +40,7 @@ const Experience = () => {
     ];
 
     return (
-        <section id="experience" className="py-24 bg-paper relative overflow-hidden">
+        <section id="experience" className="py-24 bg-paper relative">
             {/* Background Scribble */}
             <div className="absolute top-10 left-[5%] opacity-5 marker-text text-8xl rotate-[-10deg] pointer-events-none select-none">
                 TIMELINE
@@ -51,7 +51,7 @@ const Experience = () => {
                     <div className="relative inline-block px-12 py-4 bg-white scrapbook-card rotate-[1deg]">
                         <Pin className="absolute -top-4 left-1/2 -ml-3 w-8 h-8 text-peach rotate-[-20deg]" />
                         <h2 className="text-4xl md:text-5xl font-black font-outfit text-dark uppercase tracking-tighter text-center">
-                            Work <span className="sketchy-text text-pink block text-4xl md:text-5xl mt-1">Experience</span>
+                            Work <span className="sketchy-text text-pink block text-4xl md:text-5xl py-2">Experience</span>
                         </h2>
                     </div>
                 </div>
@@ -71,16 +71,16 @@ const Experience = () => {
                                 <h3 className="text-2xl font-black text-dark font-outfit uppercase tracking-tight leading-none group-hover:text-pink transition-colors">
                                     {exp.company}
                                 </h3>
-                                <span className="px-6 py-1 bg-pink/10 text-pink border-2 border-pink/10 text-xs font-black uppercase tracking-widest marker-text rotate-1">
+                                <span className="px-6 py-2 bg-pink/5 text-pink border border-pink/20 text-[11px] font-bold uppercase tracking-[0.2em] font-sans rounded-md">
                                     {exp.period}
                                 </span>
                             </div>
 
-                            <ul className="space-y-4">
+                            <ul className="space-y-6">
                                 {exp.roles.map((role, rIndex) => (
-                                    <li key={rIndex} className="flex gap-4 text-dark/70 leading-relaxed hand-text font-bold italic">
-                                        <div className="mt-2 w-2 h-2 rounded-full bg-peach flex-shrink-0" />
-                                        <span>"{role}"</span>
+                                    <li key={rIndex} className="flex gap-4 text-dark/70 leading-relaxed font-sans font-medium text-lg">
+                                        <div className="mt-2 w-2 h-2 rounded-full bg-pink flex-shrink-0" />
+                                        <span>{role}</span>
                                     </li>
                                 ))}
                             </ul>

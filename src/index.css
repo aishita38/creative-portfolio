@@ -10,12 +10,12 @@
   --font-caveat: "Caveat", cursive;
   --font-hand: "Architects Daughter", cursive;
 
-  --color-dark: #2A2A2A;
-  --color-pink: #ff7aaf;
-  --color-peach: #feb47b;
-  --color-paper: #fff0f5;
-  --color-sky: #70d6ff;
-  --color-lime: #a2d149;
+  --color-dark: #1A1A1A;
+  --color-pink: #ff4d94;
+  --color-peach: #ff9a7b;
+  --color-paper: #F9F9FB;
+  --color-sky: #4cc9f0;
+  --color-lime: #99d98c;
 }
 
 :root {
@@ -25,15 +25,16 @@
 
 @layer base {
   body {
-    background-color: #fff0f5;
-    color: #2A2A2A;
+    background-color: var(--color-paper);
+    color: var(--color-dark);
     font-family: var(--font-inter);
     background-image:
-      linear-gradient(to right, rgba(255, 122, 175, 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 122, 175, 0.1) 1px, transparent 1px);
+      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
     background-size: 40px 40px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   h1,
@@ -47,8 +48,8 @@
 @layer utilities {
   .bg-grid {
     background-image:
-      linear-gradient(to right, rgba(255, 122, 175, 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 122, 175, 0.1) 1px, transparent 1px);
+      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
     background-size: 30px 30px;
   }
 
@@ -58,8 +59,8 @@
   }
 
   .scrapbook-card {
-    @apply bg-white border-2 border-dark/10 transition-all duration-300;
-    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.1);
+    @apply bg-white border border-dark/5 transition-all duration-300;
+    box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.03);
   }
 
   .scrapbook-card:hover {

@@ -14,7 +14,7 @@ const ProjectCard = ({ project, index }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             whileHover={{ scale: 1.02, rotate: index % 2 === 0 ? 0 : 1 }}
-            className={`group relative sketchbook-card p-4 bg-white transition-all duration-300 ${tilt}`}
+            className={`group relative sketchbook-card p-3 md:p-4 bg-white transition-all duration-300 ${tilt}`}
         >
             {/* Paper Tape */}
             <div className={`tape ${tapeColor} -top-4 left-1/2 -ml-12`} />
@@ -33,23 +33,17 @@ const ProjectCard = ({ project, index }) => {
                     />
                 )}
 
-                {/* Category Badge as a "Sticker" */}
-                <div className="absolute top-4 left-4 z-20">
-                    <span className="px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white bg-dark rotate-[-10deg] inline-block shadow-lg">
-                        {project.category}
-                    </span>
-                </div>
             </div>
 
-            <div className="pt-6 pb-2 px-2 relative">
+            <div className="pt-4 pb-1 px-1 md:pt-6 md:pb-2 md:px-2 relative">
                 <Bookmark className="absolute -top-3 right-0 w-8 h-8 text-peach/40 rotate-12" />
 
-                <h3 className="text-2xl font-black text-dark mb-2 font-outfit uppercase tracking-tighter leading-none group-hover:text-pink transition-colors">
+                <h3 className="text-xl md:text-2xl font-black text-dark mb-2 font-outfit uppercase tracking-tighter leading-none group-hover:text-pink transition-colors">
                     {project.title}
                 </h3>
 
-                <p className="text-dark/60 text-sm mb-6 line-clamp-2 hand-text font-semibold italic">
-                    "{project.description}"
+                <p className="text-dark/70 text-sm mb-6 line-clamp-3 font-sans font-medium italic">
+                    {project.description}
                 </p>
 
                 <div className="flex items-center justify-between mt-auto pt-4 border-t-2 border-dashed border-dark/5">

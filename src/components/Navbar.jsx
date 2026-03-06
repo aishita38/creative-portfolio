@@ -37,23 +37,20 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-2 bg-pink/10 backdrop-blur-md border-b-2 border-pink/10' : 'py-6'}`}>
+        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-4 bg-white/90 backdrop-blur-xl border-b border-dark/5 shadow-sm' : 'py-8'}`}>
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                 <Link to="/" className="flex items-center gap-4 relative group">
                     <div className="relative">
-                        <div className="bg-white scrapbook-card px-4 py-1 rotate-[-2deg] group-hover:rotate-0 transition-transform">
-                            <span className="text-xl font-black font-outfit tracking-tighter text-dark uppercase">
-                                ISHITA<span className="text-pink">AGARWAL</span>
-                            </span>
-                        </div>
-                        <div className="absolute -top-1 -right-1 w-full h-full border-2 border-dark/10 rotate-1 group-hover:rotate-0 transition-transform pointer-events-none" />
+                        <span className="text-2xl font-black font-outfit tracking-tighter text-dark uppercase transition-all group-hover:tracking-normal">
+                            ISHITA<span className="text-pink">AGARWAL</span>
+                        </span>
                     </div>
 
-                    <div className="relative hidden sm:block">
-                        <div className="bg-white/60 scrapbook-card px-3 py-1 rotate-[3deg] group-hover:rotate-0 transition-transform flex items-center gap-2 border-dashed border-2 border-pink/20">
-                            <Notebook className="w-4 h-4 text-pink" />
-                            <span className="text-xs font-black font-outfit tracking-tighter text-dark/60 uppercase">
-                                GRAPHIC<span className="text-pink/60">DESIGNER</span>
+                    <div className="relative hidden lg:block">
+                        <div className="px-3 py-1 bg-dark/5 rounded-full border border-dark/5 flex items-center gap-2">
+                            <Notebook className="w-3 h-3 text-dark/40" />
+                            <span className="text-[10px] font-bold font-sans tracking-widest text-dark/40 uppercase">
+                                GRAPHIC DESIGNER
                             </span>
                         </div>
                     </div>
@@ -66,10 +63,10 @@ const Navbar = () => {
                             key={link.name}
                             href={link.href}
                             onClick={(e) => handleLinkClick(e, link.href)}
-                            className={`px-4 py-1 text-xs font-black uppercase tracking-widest text-dark hover:bg-pink/10 transition-colors relative group`}
+                            className={`px-4 py-2 text-[11px] font-bold uppercase tracking-[0.2em] text-dark/60 hover:text-dark transition-all relative group`}
                         >
                             {link.name}
-                            <div className={`absolute bottom-0 left-0 w-0 h-0.5 bg-pink transition-all group-hover:w-full ${idx % 2 === 0 ? 'rotate-1' : '-rotate-1'}`} />
+                            <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-pink scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
                         </a>
                     ))}
                     <div className="flex items-center space-x-6 ml-12">

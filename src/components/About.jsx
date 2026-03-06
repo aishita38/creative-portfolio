@@ -8,25 +8,27 @@ const About = () => {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid md:grid-cols-2 gap-20 items-center">
                     <motion.div
-                        initial={{ opacity: 0, rotate: -5 }}
-                        whileInView={{ opacity: 1, rotate: -3 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         className="relative"
                     >
-                        <div className="p-4 bg-white scrapbook-card rotate-[-3deg] relative z-10">
-                            <div className="tape tape-pink -top-4 -left-4" />
+                        <div className="p-4 bg-white shadow-xl relative z-10">
                             <img
                                 src={ishitaimg}
                                 alt="Ishita Agarwal"
-                                className="w-full aspect-[4/5] object-cover grayscale-[10%] sepia-[5%]"
+                                className="w-full aspect-[4/5] object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
                             />
-                            <div className="mt-4 flex justify-center border-t border-dashed border-dark/10 pt-4">
-                                <span className="hand-text font-bold italic text-dark/40">Ishita Agarwal / 2025</span>
+                            <div className="mt-4 flex justify-between items-center border-t border-dark/5 pt-4">
+                                <span className="font-sans font-bold text-xs uppercase tracking-widest text-dark/40 italic">Ishita Agarwal / 2025</span>
+                                <div className="flex gap-1">
+                                    <div className="w-2 h-2 rounded-full bg-pink" />
+                                    <div className="w-2 h-2 rounded-full bg-peach" />
+                                </div>
                             </div>
                         </div>
-                        {/* Decorative layers */}
-                        <div className="absolute top-0 left-0 w-full h-full bg-pink/20 scrapbook-card rotate-[2deg] -z-10" />
-
+                        {/* Subtle accent border */}
+                        <div className="absolute top-4 left-4 w-full h-full border border-dark/5 -z-10" />
                     </motion.div>
 
                     <div className="space-y-10">
@@ -38,25 +40,27 @@ const About = () => {
                         </div>
 
                         <div className="space-y-6">
-                            <p className="text-xl text-dark/80 leading-relaxed hand-text font-bold italic">
+                            <p className="text-xl text-dark/60 leading-relaxed font-sans font-medium italic border-l-4 border-pink pl-6">
                                 "Creative and detail-oriented Graphic Designer with hands-on experience designing social media content, banners, and UI/UX for college-level tech and cultural organizations."
                             </p>
-                            <p className="text-xl text-dark/80 leading-relaxed hand-text font-bold italic">
+                            <p className="text-xl text-dark/60 leading-relaxed font-sans font-medium">
                                 "Skilled in visual storytelling, branding, and collaborative design workflows. Passionate about creating clean, engaging designs that communicate ideas effectively."
                             </p>
                         </div>
 
                         <div className="pt-8">
-                            <h3 className="marker-text text-2xl text-dark mb-6 uppercase tracking-widest bg-dark text-white px-6 py-1 inline-block rotate-1 shadow-lg">
+                            <h3 className="text-xs font-bold text-dark/40 mb-6 uppercase tracking-[0.3em] flex items-center gap-4">
+                                <div className="h-px flex-1 bg-dark/10" />
                                 My Toolkit
+                                <div className="h-px flex-1 bg-dark/10" />
                             </h3>
-                            <div className="flex flex-wrap gap-4 pt-2">
-                                {['Figma', 'Canva', 'UI/UX Design', 'Social Media Design', 'Teamwork', 'Time Management', 'Effective Communication'].map((skill, idx) => (
+                            <div className="flex flex-wrap gap-3">
+                                {['Figma', 'Canva', 'UI/UX Design', 'Social Media Design', 'Visual Branding', 'Illustration'].map((skill) => (
                                     <span
                                         key={skill}
-                                        className={`px-6 py-2 bg-white scrapbook-card text-dark text-xs font-black uppercase tracking-widest ${idx % 2 === 0 ? 'rotate-[-2deg]' : 'rotate-[2deg]'} hover:scale-110 transition-transform cursor-default`}
+                                        className="px-5 py-2 bg-dark/5 hover:bg-dark hover:text-white border border-dark/5 rounded-full text-dark text-[10px] font-bold uppercase tracking-widest transition-all cursor-default"
                                     >
-                                        #{skill}
+                                        {skill}
                                     </span>
                                 ))}
                             </div>

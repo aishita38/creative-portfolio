@@ -17,7 +17,7 @@ const ProjectDetail = () => {
     const isCarousel = project.gallery && project.gallery.length > 0;
 
     return (
-        <div className="min-h-screen bg-paper text-dark pt-32 pb-24 relative overflow-hidden">
+        <div className="min-h-screen bg-paper text-dark pt-32 pb-24 relative">
             {/* Background Texture Overlay */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/paper-fibers.png')]" />
 
@@ -42,10 +42,7 @@ const ProjectDetail = () => {
                         <Paperclip className="absolute -top-4 -right-2 w-10 h-10 text-dark/20 rotate-12" />
 
                         <div>
-                            <span className="px-4 py-1 text-[10px] font-black uppercase tracking-[0.2em] bg-pink/20 text-pink border-2 border-pink/20 marker-text">
-                                {project.category}
-                            </span>
-                            <h1 className="text-5xl md:text-7xl font-black mt-8 mb-6 font-outfit uppercase tracking-tighter leading-none">
+                            <h1 className="text-5xl md:text-7xl font-black mt-8 mb-6 font-outfit uppercase tracking-tighter leading-tight">
                                 {project.title}
                             </h1>
                             <p className="text-xl text-dark/70 leading-relaxed font-medium hand-text italic">

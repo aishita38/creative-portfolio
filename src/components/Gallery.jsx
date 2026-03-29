@@ -9,7 +9,8 @@ const Gallery = () => {
         { id: 'GDG', label: 'GDG (Google Developer Groups)', color: 'bg-[#6B7FD7]', light: 'bg-[#F0F2FC]' },
         { id: 'Imagination', label: 'Imagination', color: 'bg-[#D36135]', light: 'bg-[#FCF4F1]' },
         { id: 'Plinth', label: 'Plinth', color: 'bg-[#2E6B4F]', light: 'bg-[#F1F7F4]' },
-        { id: 'CCell', label: 'CCell', color: 'bg-[#F2A359]', light: 'bg-[#FEF8F2]' }
+        { id: 'CCell', label: 'CCell', color: 'bg-[#F2A359]', light: 'bg-[#FEF8F2]' },
+        { id: 'Department', label: 'CSE Department', color: 'bg-[#3B82F6]', light: 'bg-[#EFF6FF]' }
     ];
 
     const [activeTab, setActiveTab] = useState(categories[0].id);

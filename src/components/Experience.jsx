@@ -30,6 +30,13 @@ const Experience = () => {
             ]
         },
         {
+            company: "CSE Department, LNMIIT",
+            period: "2025 - Present",
+            roles: [
+                "Designed official faculty recruitment posters and communication materials, approved by the Head of Department"
+            ]
+        },
+        {
             company: "Plinth - The TechFest of LNMIIT",
             period: "2024 - Present",
             roles: [

@@ -146,5 +146,16 @@ export const projects = [
         description: "Full event branding and posters for the Treasure Hunt.",
         image: "/projects/ccell_treasure.png",
         color: "from-orange-500 to-red-500"
+    },
+
+    // CSE DEPARTMENT
+    {
+        id: 19,
+        slug: "cse-faculty-recruitment",
+        title: "Faculty Recruitment",
+        category: "Department",
+        description: "Official faculty recruitment poster designed for the CSE Department, LNMIIT.",
+        image: "/projects/cse_faculty_recruitment.png",
+        color: "from-blue-600 to-blue-400"
     }
 ];

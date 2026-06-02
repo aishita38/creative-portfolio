@@ -1,106 +1,161 @@
 @import "tailwindcss";
 
 @theme {
-  --font-inter: "Inter", system-ui, sans-serif;
-  --font-outfit: "Outfit", system-ui, sans-serif;
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-gochi: "Gochi Hand", cursive;
-  --font-sketch: "Londrina Sketch", cursive;
-  --font-marker: "Permanent Marker", cursive;
-  --font-caveat: "Caveat", cursive;
-  --font-hand: "Architects Daughter", cursive;
+  --font-inter: "Share Tech Mono", monospace;
+  --font-outfit: "VT323", monospace;
+  --font-sans: "Share Tech Mono", monospace;
+  --font-syne: "Share Tech Mono", monospace;
+  --font-playfair: "Playfair Display", serif;
+  --font-mono: "Share Tech Mono", monospace;
+  --font-vt323: "VT323", monospace;
 
-  --color-dark: #1A1A1A;
-  --color-pink: #ff4d94;
-  --color-peach: #ff9a7b;
-  --color-paper: #F9F9FB;
-  --color-sky: #4cc9f0;
-  --color-lime: #99d98c;
+  --color-dark: #CBE8CE;        /* Light terminal green text */
+  --color-pink: #F7B3E3;        /* CRT neon pink */
+  --color-peach: #E496D4;       /* Secondary neon pink */
+  --color-paper: #090E0B;       /* Dark CRT black-green background */
+  --color-sky: #8FF29F;         /* Neon terminal green */
+  --color-lime: #8FF29F;
+  --color-white: #121815;       /* Console card background */
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.55; }
 }
 
 :root {
-  --font-inter: "Inter", system-ui, sans-serif;
-  --font-outfit: "Outfit", system-ui, sans-serif;
+  --font-inter: "Share Tech Mono", monospace;
+  --font-outfit: "VT323", monospace;
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-paper);
     color: var(--color-dark);
-    font-family: var(--font-inter);
-    background-image:
-      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
+    font-family: var(--font-mono);
+    background-image: 
+      linear-gradient(rgba(143, 242, 159, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(143, 242, 159, 0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
 
+  /* Scanline CRT overlay */
+  body::after {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.18) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.015), rgba(0, 0, 255, 0.03));
+    z-index: 9999;
+    background-size: 100% 3px, 6px 100%;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
   h1,
   h2,
   h3 {
-    @apply font-black;
-    font-family: var(--font-outfit);
+    font-family: var(--font-vt323);
+    font-weight: 400;
+  }
+
+  /* Selection style */
+  ::selection {
+    background-color: rgba(143, 242, 159, 0.25);
+    color: var(--color-sky);
   }
 }
 
 @layer utilities {
   .bg-grid {
-    background-image:
-      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-    background-size: 30px 30px;
+    background-image: 
+      linear-gradient(rgba(143, 242, 159, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(143, 242, 159, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
   }
 
-  .folder-tab {
-    @apply relative px-8 py-3 font-black uppercase tracking-tighter text-sm transition-all duration-300;
-    clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
-  }
-
+  /* Sleek CRT windows with subtle glassmorphism / neon borders */
   .scrapbook-card {
-    @apply bg-white border border-dark/5 transition-all duration-300;
-    box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.03);
+    @apply bg-white border border-sky/20 rounded-2xl transition-all duration-500 ease-out;
+    box-shadow: 0 4px 20px -2px rgba(143, 242, 159, 0.02);
   }
 
   .scrapbook-card:hover {
-    @apply -translate-x-1 -translate-y-1;
-    box-shadow: 12px 12px 0px rgba(0, 0, 0, 0.15);
+    @apply border-sky/50 -translate-y-1.5;
+    box-shadow: 0 0 25px rgba(143, 242, 159, 0.18);
   }
 
+  /* Completely hide scrapbook tape elements */
   .tape {
-    @apply absolute h-8 w-24 bg-white/40 backdrop-blur-sm border-x border-dark/5 z-20;
-    transform: rotate(-3deg);
+    display: none !important;
   }
 
-  .tape-pink {
-    @apply bg-pink-400/30 border-pink-500/10;
-  }
-
-  .tape-peach {
-    @apply bg-orange-300/30 border-orange-400/10;
-  }
-
-  .tape-green {
-    @apply bg-green-400/30 border-green-500/10;
-  }
-
+  /* Glitchy/chromatic aberration serif text */
   .sketchy-text {
-    font-family: var(--font-sketch);
+    font-family: var(--font-playfair);
+    @apply italic font-normal text-pink capitalize tracking-normal;
+    text-shadow: 1px 1px 0px rgba(143, 242, 159, 0.6), -1.5px -1.5px 0px rgba(247, 179, 227, 0.6);
   }
 
   .hand-text {
-    font-family: var(--font-gochi);
+    font-family: var(--font-mono);
+    @apply font-normal not-italic text-dark/70 tracking-normal;
   }
 
   .marker-text {
-    font-family: var(--font-marker);
+    font-family: var(--font-vt323);
+    @apply font-normal uppercase tracking-[0.25em] text-lg text-pink;
   }
 
   .paper-edge {
-    box-shadow:
-      2px 2px 0 0 #fff inset,
-      -2px -2px 0 0 #fff inset,
-      0 0 10px rgba(0, 0, 0, 0.05);
+    box-shadow: none !important;
+    border: 1px solid rgba(143, 242, 159, 0.15);
+  }
+
+  /* Glassmorphism accents */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-sky/25;
+  }
+
+  /* Image zoom and reveal */
+  .image-container {
+    @apply overflow-hidden rounded-xl relative;
+  }
+
+  .image-zoom {
+    @apply transition-transform duration-700 ease-out;
+  }
+
+  .image-zoom:hover {
+    @apply scale-105;
+  }
+  
+  /* Magnetic/Creative Button Effects */
+  .btn-premium {
+    @apply relative px-8 py-4 bg-sky text-white text-[11px] font-bold font-mono uppercase tracking-[0.2em] rounded-full transition-all duration-300 overflow-hidden hover:bg-pink hover:text-dark hover:shadow-[0_0_15px_rgba(247,179,227,0.4)] hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply relative px-8 py-4 border border-sky/25 text-sky text-[11px] font-bold font-mono uppercase tracking-[0.2em] rounded-full transition-all duration-300 hover:bg-sky hover:text-white hover:border-sky hover:shadow-[0_0_15px_rgba(143,242,159,0.3)] hover:-translate-y-0.5;
+  }
+
+  /* Customized folder tab styles */
+  .folder-tab {
+    @apply relative px-8 py-3 font-bold uppercase tracking-widest text-xs transition-all duration-300 bg-white border border-sky/15 rounded-t-xl;
   }
 }

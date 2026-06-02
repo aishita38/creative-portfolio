@@ -37,19 +37,19 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-4 bg-white/90 backdrop-blur-xl border-b border-dark/5 shadow-sm' : 'py-8'}`}>
+        <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'py-4 bg-paper/80 backdrop-blur-xl border-b border-dark/[0.04] shadow-sm' : 'py-6'}`}>
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                 <Link to="/" className="flex items-center gap-4 relative group">
                     <div className="relative">
-                        <span className="text-2xl font-black font-outfit tracking-tighter text-dark uppercase transition-all group-hover:tracking-normal">
-                            ISHITA<span className="text-pink">AGARWAL</span>
+                        <span className="text-xl font-bold font-mono tracking-[0.15em] text-dark uppercase transition-all">
+                            ISHITA <span className="text-pink font-vt323 font-normal normal-case tracking-normal text-3xl align-middle">Agarwal</span>
                         </span>
                     </div>
 
                     <div className="relative hidden lg:block">
-                        <div className="px-3 py-1 bg-dark/5 rounded-full border border-dark/5 flex items-center gap-2">
-                            <Notebook className="w-3 h-3 text-dark/40" />
-                            <span className="text-[10px] font-bold font-sans tracking-widest text-dark/40 uppercase">
+                        <div className="px-3 py-1 bg-sky/10 rounded-full border border-sky/20 flex items-center gap-2">
+                            <Notebook className="w-3.5 h-3.5 text-sky/70" />
+                            <span className="text-[11px] font-bold font-mono tracking-[0.2em] text-sky/80 uppercase">
                                 GRAPHIC DESIGNER
                             </span>
                         </div>
@@ -63,42 +63,40 @@ const Navbar = () => {
                             key={link.name}
                             href={link.href}
                             onClick={(e) => handleLinkClick(e, link.href)}
-                            className={`px-4 py-2 text-[11px] font-bold uppercase tracking-[0.2em] text-dark/60 hover:text-dark transition-all relative group`}
+                            className="px-4 py-2 text-xs font-bold font-mono uppercase tracking-[0.2em] text-dark/85 hover:text-sky transition-all duration-300 relative group"
                         >
                             {link.name}
                             <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-pink scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
                         </a>
                     ))}
                     <div className="flex items-center space-x-6 ml-12">
-                        <a href="mailto:aishita38@gmail.com" className="text-dark/60 hover:text-pink transition-colors relative group">
+                        <a href="mailto:aishita38@gmail.com" className="text-dark/70 hover:text-pink transition-colors relative group">
                             <Mail className="w-5 h-5" />
                         </a>
-                        <a href="https://www.linkedin.com/in/ishita-agarwal-a06791322/" target="_blank" rel="noopener noreferrer" className="text-dark/60 hover:text-pink transition-colors">
+                        <a href="https://www.linkedin.com/in/ishita-agarwal-a06791322/" target="_blank" rel="noopener noreferrer" className="text-dark/70 hover:text-pink transition-colors">
                             <Linkedin className="w-5 h-5" />
                         </a>
                     </div>
                 </div>
 
                 {/* Mobile Menu Button */}
-                <div className="md:hidden relative">
-                    <button className="relative z-10 p-2 bg-white scrapbook-card border-2 border-dark text-dark" onClick={() => setIsOpen(!isOpen)}>
-                        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                <div className="md:hidden">
+                    <button className="p-3 bg-white/90 border border-sky/20 text-dark rounded-full shadow-sm hover:bg-white transition-all" onClick={() => setIsOpen(!isOpen)}>
+                        {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                     </button>
-                    <div className="absolute -top-1 -right-1 w-full h-full border-2 border-dark/10 rotate-2 pointer-events-none" />
                 </div>
             </div>
 
             {/* Mobile Links */}
             {isOpen && (
                 <div className="md:hidden absolute top-full left-0 w-full px-6 py-4 animate-in fade-in slide-in-from-top-4 duration-300">
-                    <div className="bg-white scrapbook-card p-8 flex flex-col space-y-8 border-4 border-dark/10 rotate-1 shadow-2xl">
-                        <div className="tape tape-pink -top-4 left-1/4" />
+                    <div className="bg-white/95 backdrop-blur-xl border border-dark/[0.06] p-8 flex flex-col space-y-6 rounded-2xl shadow-xl">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
                                 href={link.href}
                                 onClick={(e) => handleLinkClick(e, link.href)}
-                                className="text-2xl font-black text-dark uppercase tracking-tighter marker-text hover:text-pink transition-colors"
+                                className="text-xl font-bold font-syne text-dark uppercase tracking-widest hover:text-pink transition-colors"
                             >
                                 {link.name}
                             </a>

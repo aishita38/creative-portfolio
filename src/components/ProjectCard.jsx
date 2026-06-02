@@ -4,67 +4,60 @@ import { ExternalLink, Eye, Bookmark } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ project, index }) => {
-    // Alternate tilt for scrapbook feel
-    const tilt = index % 2 === 0 ? 'rotate-2' : '-rotate-1';
-    const tapeColor = index % 3 === 0 ? 'tape-pink' : index % 3 === 1 ? 'tape-green' : 'tape-pink';
-
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.02, rotate: index % 2 === 0 ? 0 : 1 }}
-            className={`group relative sketchbook-card p-3 md:p-4 bg-white transition-all duration-300 ${tilt}`}
+            className="group relative bg-white border border-sky/20 rounded-[1.5rem] p-4 transition-all duration-500 hover:border-sky/50 hover:shadow-[0_0_20px_rgba(143,242,159,0.15)]"
         >
-            {/* Paper Tape */}
-            <div className={`tape ${tapeColor} -top-4 left-1/2 -ml-12`} />
-
-            <div className="relative aspect-[4/3] w-full overflow-hidden border-2 border-dark/5 bg-paper">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1rem] bg-paper border border-sky/10">
                 {project.cardBg ? (
                     <div
-                        className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                        className="w-full h-full bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
                         style={{ backgroundImage: `url(${project.cardBg})` }}
                     />
                 ) : (
                     <img
                         src={project.image}
                         alt={project.title}
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                 )}
-
+                {/* Subtle glass overlay tag for category */}
+                <div className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-md rounded-full border border-sky/20 text-[10px] font-bold font-mono tracking-[0.2em] text-dark">
+                    {project.category}
+                </div>
             </div>
 
-            <div className="pt-4 pb-1 px-1 md:pt-6 md:pb-2 md:px-2 relative">
-                <Bookmark className="absolute -top-3 right-0 w-8 h-8 text-peach/40 rotate-12" />
-
-                <h3 className="text-xl md:text-2xl font-black text-dark mb-2 font-outfit uppercase tracking-tighter leading-none group-hover:text-pink transition-colors">
+            <div className="pt-5 pb-1 px-1 relative">
+                <h3 className="text-xl font-bold text-dark mb-2 font-mono tracking-tight group-hover:text-pink transition-colors">
                     {project.title}
                 </h3>
 
-                <p className="text-dark/70 text-sm mb-6 line-clamp-3 font-sans font-medium italic">
+                <p className="text-dark/80 text-sm leading-relaxed mb-6 line-clamp-2 font-sans font-medium">
                     {project.description}
                 </p>
 
-                <div className="flex items-center justify-between mt-auto pt-4 border-t-2 border-dashed border-dark/5">
+                <div className="flex items-center justify-between pt-4 border-t border-sky/15">
                     <div className="flex items-center gap-3">
                         {project.gallery ? (
                             <Link
                                 to={`/project/${project.slug}`}
-                                className="flex items-center gap-2 text-xs font-black uppercase tracking-widest hover:text-pink transition-colors group/btn"
+                                className="inline-flex items-center gap-2 text-xs font-bold font-mono tracking-wider text-dark/85 hover:text-pink transition-colors cursor-pointer"
                             >
                                 <Eye className="w-4 h-4" />
-                                <span className="underline decoration-2 underline-offset-4">Open Folder</span>
+                                <span>Open Project</span>
                             </Link>
                         ) : (
                             <a
                                 href={project.link || project.image}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-2 text-xs font-black uppercase tracking-widest hover:text-pink transition-colors"
+                                className="inline-flex items-center gap-2 text-xs font-bold font-mono tracking-wider text-dark/85 hover:text-pink transition-colors cursor-pointer"
                             >
                                 <ExternalLink className="w-4 h-4" />
-                                <span className="underline decoration-2 underline-offset-4">View File</span>
+                                <span>View Artwork</span>
                             </a>
                         )}
                     </div>

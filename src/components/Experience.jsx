@@ -6,7 +6,7 @@ const Experience = () => {
     const experiences = [
         {
             company: "Google Developer Groups on Campus - LNMIIT",
-            period: "2025 - Present",
+            period: "2025 - May 2026",
             roles: [
                 "Designed engaging social media creatives to promote technical events, workshops, and sessions",
                 "Worked closely with organizers to align designs with GDG brand guidelines",
@@ -15,7 +15,7 @@ const Experience = () => {
         },
         {
             company: "Counselling & Guidance Cell, LNMIIT",
-            period: "2024 - Present",
+            period: "2024 - May 2026",
             roles: [
                 "Designed social media posts and stories to promote events, and student initiatives",
                 "Collaborated with the core team to maintain consistent visual identity across platforms"
@@ -29,16 +29,10 @@ const Experience = () => {
                 "Assisted in visual branding and creative direction for club activities"
             ]
         },
-        {
-            company: "CSE Department, LNMIIT",
-            period: "2025 - Present",
-            roles: [
-                "Designed official faculty recruitment posters and communication materials, approved by the Head of Department"
-            ]
-        },
+
         {
             company: "Plinth - The TechFest of LNMIIT",
-            period: "2024 - Present",
+            period: "2024 - May 2026",
             roles: [
                 "Designed social media posts, stories, and event banners for Instagram and promotional campaigns",
                 "Collaborated with the core organizing team to maintain consistent branding across digital platforms"
@@ -47,52 +41,42 @@ const Experience = () => {
     ];
 
     return (
-        <section id="experience" className="py-24 bg-paper relative">
-            {/* Background Scribble */}
-            <div className="absolute top-10 left-[5%] opacity-5 marker-text text-8xl rotate-[-10deg] pointer-events-none select-none">
-                TIMELINE
-            </div>
-
+        <section id="experience" className="py-12 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="flex flex-col items-center mb-20">
-                    <div className="relative inline-block px-12 py-4 bg-white scrapbook-card rotate-[1deg]">
-                        <Pin className="absolute -top-4 left-1/2 -ml-3 w-8 h-8 text-peach rotate-[-20deg]" />
-                        <h2 className="text-4xl md:text-5xl font-black font-outfit text-dark uppercase tracking-tighter text-center">
-                            Work <span className="sketchy-text text-pink block text-4xl md:text-5xl py-2">Experience</span>
+                <div className="flex flex-col items-center mb-12">
+                    <div className="relative inline-block text-center">
+                        <h2 className="text-6xl md:text-8xl font-bold font-outfit text-dark uppercase tracking-normal mt-2">
+                            Work <span className="sketchy-text block md:inline py-1">Experience</span>
                         </h2>
                     </div>
                 </div>
 
-                <div className="space-y-16 max-w-4xl mx-auto">
+                <div className="space-y-10 max-w-4xl mx-auto">
                     {experiences.map((exp, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className={`p-8 bg-white scrapbook-card relative group transition-all duration-300 ${index % 2 === 0 ? 'rotate-[-0.5deg]' : 'rotate-[0.5deg]'}`}
+                            className="p-8 md:p-10 bg-white border border-sky/20 rounded-[2rem] relative group transition-all duration-500 hover:border-sky/50 hover:shadow-[0_0_20px_rgba(143,242,159,0.15)]"
                         >
-                            <div className={`tape tape-pink -top-2 ${index % 2 === 0 ? 'left-10' : 'right-10'} w-24`} />
-
                             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-                                <h3 className="text-2xl font-black text-dark font-outfit uppercase tracking-tight leading-none group-hover:text-pink transition-colors">
+                                <h3 className="text-xl md:text-2xl font-bold text-dark font-mono tracking-tight group-hover:text-pink transition-colors">
                                     {exp.company}
                                 </h3>
-                                <span className="px-6 py-2 bg-pink/5 text-pink border border-pink/20 text-[11px] font-bold uppercase tracking-[0.2em] font-sans rounded-md">
+                                <span className="px-4 py-1.5 bg-sky text-white text-[11px] font-bold font-mono uppercase tracking-[0.2em] rounded-full flex-shrink-0">
                                     {exp.period}
                                 </span>
                             </div>
 
-                            <ul className="space-y-6">
+                            <ul className="space-y-4">
                                 {exp.roles.map((role, rIndex) => (
-                                    <li key={rIndex} className="flex gap-4 text-dark/70 leading-relaxed font-sans font-medium text-lg">
-                                        <div className="mt-2 w-2 h-2 rounded-full bg-pink flex-shrink-0" />
-                                        <span>{role}</span>
+                                    <li key={rIndex} className="flex gap-4 text-dark/85 leading-relaxed font-sans font-medium text-base md:text-lg">
+                                        <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-pink flex-shrink-0" />
+                                        <span className="text-dark/85 font-sans font-medium text-base md:text-lg leading-relaxed">{role}</span>
                                     </li>
                                 ))}
                             </ul>
-
-
                         </motion.div>
                     ))}
                 </div>

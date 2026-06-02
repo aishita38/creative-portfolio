@@ -6,6 +6,7 @@ import { Folder, FolderOpen, Stars, Archive } from 'lucide-react';
 
 const Gallery = () => {
     const categories = [
+        { id: 'ALL', label: 'All Projects', color: 'bg-[#93C5FD]', light: 'bg-[#EFF6FF]' },
         { id: 'GDG', label: 'GDG (Google Developer Groups)', color: 'bg-[#6B7FD7]', light: 'bg-[#F0F2FC]' },
         { id: 'Imagination', label: 'Imagination', color: 'bg-[#D36135]', light: 'bg-[#FCF4F1]' },
         { id: 'Plinth', label: 'Plinth', color: 'bg-[#2E6B4F]', light: 'bg-[#F1F7F4]' },
@@ -13,40 +14,39 @@ const Gallery = () => {
         { id: 'Department', label: 'CSE Department', color: 'bg-[#3B82F6]', light: 'bg-[#EFF6FF]' }
     ];
 
-    const [activeTab, setActiveTab] = useState(categories[0].id);
+    const [activeTab, setActiveTab] = useState('ALL');
 
     const activeCategory = categories.find(c => c.id === activeTab);
-    const filteredProjects = projects.filter(p => {
-        if (activeTab === 'Imagination') return p.category === 'Imagination';
-        return p.category === activeTab;
-    });
+    const filteredProjects = activeTab === 'ALL'
+        ? projects
+        : projects.filter(p => {
+            if (activeTab === 'Imagination') return p.category === 'Imagination';
+            return p.category === activeTab;
+        });
 
     return (
-        <section id="work" className="py-24 relative bg-paper">
-            {/* Main Background Grid */}
-            <div className="absolute inset-0 opacity-[0.4] bg-grid pointer-events-none" />
-
+        <section id="work" className="py-24 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="text-center mb-24">
+                <div className="text-center mb-20">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        className="inline-block relative px-12 py-8 bg-white scrapbook-card rotate-[-1deg] mb-8"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-block mb-4"
                     >
-                        <motion.h2 className="text-6xl md:text-8xl font-black font-outfit uppercase tracking-tighter leading-tight mb-2">
-                            Designer <span className="sketchy-text text-pink block md:inline py-2">Archives</span>
+                        <span className="text-xs font-bold font-mono tracking-[0.3em] text-pink">Designer Archives</span>
+                        <motion.h2 className="text-6xl md:text-8xl font-bold font-outfit uppercase tracking-normal leading-tight mt-2 text-dark">
+                            Selected <span className="sketchy-text block md:inline">Works</span>
                         </motion.h2>
-                        <div className="tape tape-pink -top-6 -left-6" />
-                        <div className="tape tape-peach -bottom-6 -right-6 rotate-12" />
                     </motion.div>
 
-                    <p className="text-xl text-dark/70 font-sans font-medium max-w-lg mx-auto leading-relaxed mt-4 uppercase tracking-[0.2em] text-xs">
+                    <p className="text-dark/80 font-mono text-xs font-bold uppercase tracking-[0.2em] max-w-xl mx-auto mt-2">
                         "Curated collections of my design journey, categorized by chapters."
                     </p>
                 </div>
 
                 {/* Categories Navigation */}
-                <div className="flex flex-wrap items-center justify-center gap-4 mb-16 relative z-20">
+                <div className="flex flex-wrap items-center justify-center gap-3 mb-16 relative z-20">
                     {categories.map((cat) => {
                         const isActive = activeTab === cat.id;
                         return (
@@ -54,10 +54,10 @@ const Gallery = () => {
                                 key={cat.id}
                                 onClick={() => setActiveTab(cat.id)}
                                 className={`
-                                    px-10 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] transition-all duration-500
+                                    px-6 py-3 rounded-full text-xs font-bold font-mono uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer
                                     ${isActive
-                                        ? `bg-dark text-white shadow-xl scale-110`
-                                        : 'bg-white text-dark/70 hover:text-dark hover:bg-dark/5 border border-dark/10'
+                                        ? 'bg-sky text-white border border-sky shadow-[0_0_15px_rgba(143,242,159,0.35)] scale-105'
+                                        : 'bg-white text-dark/80 hover:text-sky hover:bg-white/90 border border-sky/15 shadow-sm'
                                     }
                                 `}
                             >
@@ -70,37 +70,29 @@ const Gallery = () => {
                 {/* Expanded Folder Content Area */}
                 <motion.div
                     layout
-                    className={`
-                        min-h-[700px] w-full border border-dark/5 shadow-[20px_20px_0px_rgba(0,0,0,0.02)] relative overflow-hidden
-                        transition-all duration-500 rounded-b-3xl md:rounded-tr-3xl
-                    `}
-                    style={{ backgroundColor: activeCategory.light }}
+                    className="min-h-[600px] w-full border border-sky/20 rounded-[2rem] relative overflow-hidden bg-white/70 backdrop-blur-md shadow-md transition-all duration-500"
                 >
-                    {/* Interior Folder Grid Pattern */}
-                    <div className="absolute inset-0 opacity-[0.2] bg-grid pointer-events-none" />
-
-                    <div className="p-5 md:p-16 relative z-10">
-                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 border-b-4 border-dashed border-dark/10 pb-6 md:pb-10 gap-6">
-                            <div className="space-y-4">
-                                <div className="flex items-center gap-4">
-                                    <Archive className="w-8 h-8 text-dark/50" />
-                                    <span className="marker-text text-xl text-dark/60 uppercase tracking-[0.3em]">SERIES #002</span>
+                    <div className="p-6 md:p-16 relative z-10">
+                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-sky/15 pb-8 gap-6">
+                            <div className="space-y-3">
+                                <div className="flex items-center gap-3">
+                                    <Archive className="w-4 h-4 text-sky/70" />
+                                    <span className="text-xs font-bold font-mono tracking-[0.25em] text-sky/80">SERIES // 002</span>
                                 </div>
-                                <h3 className="text-3xl md:text-6xl font-black font-outfit uppercase tracking-tighter text-dark leading-none">
-                                    {activeCategory.id === 'GDG' ? (
-                                        <>GDG <span className="sketchy-text text-pink">Developer Groups</span></>
+                                <h3 className="text-4xl md:text-6xl font-bold font-outfit uppercase tracking-normal text-dark leading-none">
+                                    {activeCategory.id === 'ALL' ? (
+                                        <>All <span className="text-pink italic font-normal font-playfair lowercase">archives</span></>
+                                    ) : activeCategory.id === 'GDG' ? (
+                                        <>GDG <span className="text-pink italic font-normal font-playfair lowercase">on campus</span></>
                                     ) : activeCategory.id === 'Plinth' ? (
-                                        <>Plinth <span className="sketchy-text text-pink">Techfest</span></>
+                                        <>Plinth <span className="text-pink italic font-normal font-playfair lowercase">Techfest</span></>
                                     ) : (
-                                        <>{activeCategory.label.split(' ')[0]} <span className="sketchy-text text-pink">{activeCategory.label.split(' ')[1] || 'Chapter'}</span></>
+                                        <>{activeCategory.label.split(' ')[0]} <span className="text-pink italic font-normal font-playfair lowercase">{activeCategory.label.split(' ')[1] || 'Chapter'}</span></>
                                     )}
                                 </h3>
-                                <p className="font-sans text-sm font-bold uppercase tracking-[0.1em] text-dark/60">
-                                    "{filteredProjects.length} records retrieved from the database"
+                                <p className="font-mono text-sm font-semibold text-dark/75">
+                                    Showing {filteredProjects.length} selected works in this category
                                 </p>
-                            </div>
-                            <div className="flex items-center gap-4 rotate-3">
-                                <Stars className="w-12 h-12 text-peach animate-pulse" />
                             </div>
                         </div>
 
@@ -111,7 +103,7 @@ const Gallery = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
                                 transition={{ duration: 0.4, ease: "easeOut" }}
-                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14"
+                                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
                             >
                                 {filteredProjects.map((project, idx) => (
                                     <ProjectCard key={project.id} project={project} index={idx} />
@@ -120,17 +112,12 @@ const Gallery = () => {
                         </AnimatePresence>
 
                         {filteredProjects.length === 0 && (
-                            <div className="h-96 flex flex-col items-center justify-center text-dark/20 space-y-6">
-                                <div className="relative">
-                                    <Folder className="w-24 h-24 opacity-10" />
-                                    <Archive className="absolute bottom-0 right-0 w-10 h-10 opacity-20" />
-                                </div>
-                                <p className="marker-text text-3xl uppercase tracking-[0.2em]">Access Denied: Empty Folder</p>
+                            <div className="h-96 flex flex-col items-center justify-center text-dark/20 space-y-4">
+                                <Archive className="w-12 h-12 opacity-35" />
+                                <p className="font-syne text-[10px] font-bold uppercase tracking-widest text-dark/40">No projects found in this archive</p>
                             </div>
                         )}
                     </div>
-
-
                 </motion.div>
             </div>
         </section>
